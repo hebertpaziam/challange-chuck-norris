@@ -2,7 +2,7 @@
 
 A website that implements the Chuck Norris Jokes API to bring facts about the god called Chuck Norris.
 
-[![License](https://img.shields.io/npm/l/@hebertpazian/chuck-norris-app?color=%23F44336)](https://github.com/hebertpazian/chuck-norris-app/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/hebertpazian/chuck-norris-app?color=%23F44336)](https://github.com/hebertpazian/chuck-norris-app/blob/main/LICENSE)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Code Size](https://img.shields.io/github/languages/code-size/hebertpazian/chuck-norris-app?color=%23F44336&label=size)](https://github.com/hebertpazian/chuck-norris-app)
 [![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/hebertpazian/chuck-norris-app)](https://github.com/hebertpazian/chuck-norris-app)
