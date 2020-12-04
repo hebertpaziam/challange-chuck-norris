@@ -17,7 +17,7 @@
     "target": "esnext",
     "types": ["webpack-env", "jest"],
     "paths": {
-      "@/*": ["src/*"]
+      "@app/*": ["src/*"]
     }
   }
 }
