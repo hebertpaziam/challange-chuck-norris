@@ -8,7 +8,7 @@ A website that implements the Chuck Norris Jokes API to bring facts about the go
 [![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/hebertpazian/chuck-norris-app)](https://github.com/hebertpazian/chuck-norris-app)
 [![Coverage Status](https://img.shields.io/coveralls/github/hebertpazian/utils.svg)](https://coveralls.io/github/hebertpazian/utils)
 
-## Project setup and run with hot-reloads for development
+### Project setup and run with hot-reloads for development
 
 ```sh
 npm install
