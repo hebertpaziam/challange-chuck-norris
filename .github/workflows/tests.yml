@@ -1,0 +1,29 @@
+name: "deploy"
+on:
+  push:
+    branches:
+      - main
+jobs:
+  release:
+    name: "release"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@master
+
+      - name: Set up Node.js
+        uses: actions/setup-node@master
+        with:
+          node-version: 14
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        uses: bahmutov/npm-install@master
+
+      - name: Run Jest
+        run: npm test
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
