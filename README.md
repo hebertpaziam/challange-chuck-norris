@@ -12,7 +12,7 @@ A website that implements the Chuck Norris Jokes API to bring facts about the go
 
 ```sh
 npm install
-npm run serve
+npm start
 ```
 
 ### Compiles and minifies for production
