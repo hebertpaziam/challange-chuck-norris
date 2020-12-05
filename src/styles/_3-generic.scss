@@ -1,0 +1,19 @@
+@import "~normalize.css";
+
+@font-face {
+  font-family: "chucknorris";
+  src: url("/fonts/chucknorris.woff") format("woff"), url("/fonts/chucknorris.ttf") format("truetype");
+}
+
+* {
+  font-family: "Courier New", Courier, monospace;
+
+  &,
+  &::before,
+  &::after {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}

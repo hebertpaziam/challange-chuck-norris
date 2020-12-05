@@ -1,0 +1,18 @@
+html,
+body {
+  font-size: 16px;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+h1 {
+  color: var(--primary-color);
+  text-shadow: 3px 3px #222;
+  font-family: var(--font-norris);
+}
