@@ -16,3 +16,9 @@ h1 {
   text-shadow: 3px 3px #222;
   font-family: var(--font-norris);
 }
+
+a,
+button {
+  cursor: pointer;
+  background-color: transparent;
+}

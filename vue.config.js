@@ -1,13 +1,4 @@
 module.exports = {
-  devServer: {
-    proxy: {
-      '^/api': {
-        target: 'https://api.chucknorris.io/',
-        ws: true,
-        changeOrigin: true
-      }
-    }
-  },
   pwa: {
     appleMobileWebAppStatusBarStyle: 'black',
     msTileColor: '#000000',

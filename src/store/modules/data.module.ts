@@ -1,30 +1,68 @@
-import { IFact } from "@/interfaces/fact.interface";
-import { IList } from "@/interfaces/list.interface";
-import { Action, Module, Mutation, VuexModule } from "vuex-module-decorators";
+import { IFact } from '@/interfaces/fact.interface';
+import { IList } from '@/interfaces/list.interface';
+import { Action, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 
-@Module({ namespaced: true, name: "data-module" })
+@Module({ namespaced: true })
 class DataModule extends VuexModule {
-  data: IList<IFact> = { total: 0, result: [] };
-  searchTerm = "";
+  categories: Array<string> = [];
+  searchResult: IList<IFact> = { total: 0, result: [] };
 
   // ========== MUTATIONS ========== //
   @Mutation
-  setData(data: IList<IFact>): void {
-    this.data = data;
+  fetchCategories() {
+    fetch(`https://api.chucknorris.io/jokes/categories`)
+      .then((response) => {
+        if (response.ok) return response.json();
+        else throw Error(response.statusText);
+      })
+      .then((data) => {
+        this.categories = data;
+      });
   }
+
   @Mutation
-  setSearchTerm(searchTerm: string): void {
-    this.searchTerm = searchTerm;
+  fetchRandomFact(category?: string) {
+    fetch(`https://api.chucknorris.io/jokes/random${category ? `?category=${category}` : ''}`)
+      .then((response) => {
+        if (response.ok) return response.json();
+        else throw Error(response.statusText);
+      })
+      .then((data) => {
+        this.searchResult = { total: 1, result: [data] };
+      });
+  }
+
+  @Mutation
+  fetchFactsByQuery(query: string) {
+    fetch(`https://api.chucknorris.io/jokes/search?query=${query}`)
+      .then((response) => {
+        if (response.ok) return response.json();
+        else throw Error(response.statusText);
+      })
+      .then((data) => {
+        this.searchResult = data;
+      });
   }
 
   // ========== ACTIONS ========== //
   @Action
-  updateData(data: IList<IFact>): void {
-    this.context.commit("setData", data);
+  requestCategories(): void {
+    this.context.commit('fetchCategories');
   }
+
   @Action
-  updateSearchTerm(searchTerm: string): void {
-    this.context.commit("setSearchTerm", searchTerm);
+  requestRandomFact(): void {
+    this.context.commit('fetchRandomFact', null);
+  }
+
+  @Action
+  requestRandomFactByCategory(category: string): void {
+    this.context.commit('fetchRandomFact', category);
+  }
+
+  @Action
+  requestFactByQuery(query: string): void {
+    this.context.commit('fetchFactsByQuery', query);
   }
 }
 export default DataModule;

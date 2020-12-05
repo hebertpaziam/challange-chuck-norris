@@ -1,23 +1,42 @@
-<template>
-  <router-view />
-</template>
-
 <style lang="scss">
-@import "~normalize.css";
+@import '@/styles/main.scss';
 
-@font-face {
-  font-family: "chucknorris";
-  src: url("/fonts/chucknorris.woff") format("woff"), url("/fonts/chucknorris.ttf") format("truetype");
-}
-
-:root {
-  --primary-color: #f15b23;
-}
-
-h1 {
-  color: var(--primary-color);
-  text-shadow: 3px 3px #222;
-  font-family: "chucknorris", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-    "Helvetica Neue", sans-serif;
+footer {
+  min-height: 100px;
 }
 </style>
+
+<template>
+  <div class="app">
+    <header>
+      <Nav />
+    </header>
+
+    <main>
+      <router-view />
+    </main>
+
+    <footer></footer>
+  </div>
+</template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import { namespace } from 'vuex-class';
+
+import Nav from '@/components/Nav.vue';
+
+const DataModule = namespace('DataModule');
+
+@Component({
+  components: { Nav }
+})
+export default class Home extends Vue {
+  @DataModule.Action
+  requestCategories!: () => void;
+
+  created() {
+    this.requestCategories();
+  }
+}
+</script>

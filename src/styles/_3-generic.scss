@@ -1,12 +1,12 @@
-@import "~normalize.css";
+@import '~normalize.css';
 
 @font-face {
-  font-family: "chucknorris";
-  src: url("/fonts/chucknorris.woff") format("woff"), url("/fonts/chucknorris.ttf") format("truetype");
+  font-family: 'chucknorris';
+  src: url('/fonts/chucknorris.woff') format('woff'), url('/fonts/chucknorris.ttf') format('truetype');
 }
 
 * {
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
 
   &,
   &::before,
