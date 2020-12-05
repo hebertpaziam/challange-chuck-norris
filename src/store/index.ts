@@ -1,4 +1,4 @@
-import DataModule from "@app/store/modules/data.module";
+import DataModule from "@/store/modules/data.module";
 import Vue from "vue";
 import Vuex from "vuex";
 

@@ -1,5 +1,5 @@
-import { IFact } from "@app/interfaces/fact.interface";
-import { IList } from "@app/interfaces/list.interface";
+import { IFact } from "@/interfaces/fact.interface";
+import { IList } from "@/interfaces/list.interface";
 import { Action, Module, Mutation, VuexModule } from "vuex-module-decorators";
 
 @Module({ namespaced: true, name: "data-module" })

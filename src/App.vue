@@ -1,32 +1,23 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+  <router-view />
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import "~normalize.css";
+
+@font-face {
+  font-family: "chucknorris";
+  src: url("/fonts/chucknorris.woff") format("woff"), url("/fonts/chucknorris.ttf") format("truetype");
 }
 
-#nav {
-  padding: 30px;
+:root {
+  --primary-color: #f15b23;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+h1 {
+  color: var(--primary-color);
+  text-shadow: 3px 3px #222;
+  font-family: "chucknorris", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
 }
 </style>
