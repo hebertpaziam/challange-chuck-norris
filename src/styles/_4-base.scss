@@ -11,14 +11,19 @@ img {
   height: auto;
 }
 
-h1 {
-  color: var(--primary-color);
-  text-shadow: 3px 3px #222;
-  font-family: var(--font-norris);
-}
-
 a,
 button {
   cursor: pointer;
   background-color: transparent;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--primary-color);
+  text-shadow: 2px 2px #222;
+  font-family: var(--font-norris);
 }

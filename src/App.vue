@@ -9,7 +9,7 @@ footer {
 <template>
   <div class="app">
     <header>
-      <Nav />
+      <Brand />
     </header>
 
     <main>
@@ -24,12 +24,12 @@ footer {
 import { Component, Vue } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 
-import Nav from '@/components/Nav.vue';
+import Brand from '@/components/Brand.vue';
 
 const DataModule = namespace('DataModule');
 
 @Component({
-  components: { Nav }
+  components: { Brand }
 })
 export default class Home extends Vue {
   @DataModule.Action

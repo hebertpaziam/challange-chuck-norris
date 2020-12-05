@@ -1,11 +1,12 @@
 <style lang="scss" scoped>
-.nav {
+.brand {
   padding: 30px 0 0 0;
 
-  &__brand {
+  &__anchor {
     position: relative;
     display: block;
-    width: 320px;
+    width: 90%;
+    max-width: 320px;
     margin: auto auto 38px auto;
     transform: translateZ(0);
     backface-visibility: hidden;
@@ -22,8 +23,8 @@
 </style>
 
 <template>
-  <nav class="nav">
-    <router-link class="nav__brand" to="/">
+  <nav class="brand">
+    <router-link class="brand__anchor" to="/">
       <figure>
         <img alt="Chuck Norris Logo" src="/images/logo.png" />
       </figure>

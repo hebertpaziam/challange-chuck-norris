@@ -1,22 +1,25 @@
 <style scoped lang="scss">
 .categories {
+  width: 90%;
+  max-width: 560px;
+  margin: 38px auto auto auto;
+  text-align: center;
+
   &__container {
     display: flex;
     flex-wrap: wrap;
     place-items: center;
     place-content: center;
-    width: 90%;
-    max-width: 670px;
-    margin: 38px auto auto auto;
+    margin-top: 1rem;
   }
 
   &__item {
     display: block;
-    margin: 5px;
+    margin: 0.5rem;
     padding: 3px 8px;
-    border-radius: 25px;
-    border: 1px solid var(--primary-color);
-    transition: all 150ms ease;
+    border-radius: var(--radius-default);
+    border: 2px solid var(--primary-color);
+    transition: var(--transition-default);
     box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.07), 0 1px 3px 0 rgba(0, 0, 0, 0.06);
 
     &:focus,
@@ -30,6 +33,7 @@
 </style>
 <template>
   <div class="categories">
+    <h2>Get a random fact by category</h2>
     <div class="categories__container">
       <button
         class="categories__item"
