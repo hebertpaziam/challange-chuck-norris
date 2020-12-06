@@ -3,66 +3,59 @@ import { IList } from '@/interfaces/list.interface';
 import { Action, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 
 @Module({ namespaced: true })
-class DataModule extends VuexModule {
+export default class DataModule extends VuexModule {
   categories: Array<string> = [];
-  searchResult: IList<IFact> = { total: 0, result: [] };
+  facts: IList<IFact> = { total: 0, result: [] };
 
   // ========== MUTATIONS ========== //
   @Mutation
-  fetchCategories() {
-    fetch(`https://api.chucknorris.io/jokes/categories`)
-      .then((response) => {
-        if (response.ok) return response.json();
-        else throw Error(response.statusText);
-      })
-      .then((data) => {
-        this.categories = data;
-      });
+  setCategories(categories: Array<string>) {
+    this.categories = categories;
   }
 
   @Mutation
-  fetchRandomFact(category?: string) {
-    fetch(`https://api.chucknorris.io/jokes/random${category ? `?category=${category}` : ''}`)
-      .then((response) => {
-        if (response.ok) return response.json();
-        else throw Error(response.statusText);
-      })
-      .then((data) => {
-        this.searchResult = { total: 1, result: [data] };
-      });
-  }
-
-  @Mutation
-  fetchFactsByQuery(query: string) {
-    fetch(`https://api.chucknorris.io/jokes/search?query=${query}`)
-      .then((response) => {
-        if (response.ok) return response.json();
-        else throw Error(response.statusText);
-      })
-      .then((data) => {
-        this.searchResult = data;
-      });
+  setFacts(result: IList<IFact>) {
+    this.facts = result;
   }
 
   // ========== ACTIONS ========== //
   @Action
-  requestCategories(): void {
-    this.context.commit('fetchCategories');
+  requestCategories() {
+    return fetch(`https://api.chucknorris.io/jokes/categories`)
+      .then((response) => {
+        if (response.ok) return response.json();
+        else throw Error(response.statusText);
+      })
+      .then((data) => this.context.commit('setCategories', data));
   }
 
   @Action
-  requestRandomFact(): void {
-    this.context.commit('fetchRandomFact', null);
+  requestRandomFact() {
+    return fetch(`https://api.chucknorris.io/jokes/random`)
+      .then((response) => {
+        if (response.ok) return response.json();
+        else throw Error(response.statusText);
+      })
+      .then((data) => this.context.commit('setFacts', { total: 1, result: [data] }));
   }
 
   @Action
-  requestRandomFactByCategory(category: string): void {
-    this.context.commit('fetchRandomFact', category);
+  requestRandomFactByCategory(category: string) {
+    return fetch(`https://api.chucknorris.io/jokes/random?category=${category}`)
+      .then((response) => {
+        if (response.ok) return response.json();
+        else throw Error(response.statusText);
+      })
+      .then((data) => this.context.commit('setFacts', { total: 1, result: [data] }));
   }
 
   @Action
-  requestFactByQuery(query: string): void {
-    this.context.commit('fetchFactsByQuery', query);
+  requestFactByQuery(query: string) {
+    return fetch(`https://api.chucknorris.io/jokes/search?query=${query}`)
+      .then((response) => {
+        if (response.ok) return response.json();
+        else throw Error(response.statusText);
+      })
+      .then((data) => this.context.commit('setFacts', data));
   }
 }
-export default DataModule;
