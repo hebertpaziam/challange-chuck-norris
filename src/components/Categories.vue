@@ -2,7 +2,6 @@
 .categories {
   width: 90%;
   max-width: 560px;
-  margin: 38px auto auto auto;
   text-align: center;
 
   &__container {
@@ -32,7 +31,7 @@
 }
 </style>
 <template>
-  <div class="categories">
+  <section class="categories">
     <h2>Get a random fact by category</h2>
     <div class="categories__container">
       <button
@@ -40,12 +39,12 @@
         type="button"
         v-for="category in data"
         :key="category"
-        @click.prevent="requestRandomFactByCategory(category)"
+        @click.prevent="requestDataAndRedirect(category)"
       >
         {{ category }}
       </button>
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts">
@@ -56,10 +55,20 @@ const DataModule = namespace('DataModule');
 
 @Component
 export default class Categories extends Vue {
-  @DataModule.State('categories')
-  data!: Array<string>;
+  @DataModule.State('categories') data!: Array<string>;
 
   @DataModule.Action
-  requestRandomFactByCategory!: (category: string) => void;
+  requestCategories!: () => Promise<void>;
+
+  @DataModule.Action
+  requestRandomFactByCategory!: (category: string) => Promise<void>;
+
+  created() {
+    this.requestCategories();
+  }
+
+  requestDataAndRedirect(category: string) {
+    this.requestRandomFactByCategory(category).then(() => this.$router.push({ path: '/fact-details' }));
+  }
 }
 </script>

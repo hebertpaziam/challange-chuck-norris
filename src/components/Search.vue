@@ -1,7 +1,5 @@
 <style scoped lang="scss">
 .search {
-  text-align: center;
-
   &__group {
     position: relative;
     display: flex;
@@ -10,7 +8,7 @@
     width: 90%;
     max-width: 560px;
     height: 44px;
-    margin: auto auto 1rem auto;
+    margin: auto;
   }
 
   &__control {
@@ -57,49 +55,17 @@
     }
   }
 
-  &__lucky {
-    display: inline-flex;
-    place-items: center;
-    place-content: center;
-    border: 1px solid rgba(32, 33, 36, 0);
-    border-radius: 4px;
-    transition: var(--transition-default);
-    transition-duration: 300ms;
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-
-    img {
-      opacity: 0;
-      width: 20px;
-      margin-bottom: 1px;
-      transition: inherit;
-      transform: translateY(-3px);
-    }
-
-    &:focus,
-    &:active,
-    &:hover {
-      color: var(--primary-color);
-      font-weight: bold;
-      padding: 0 22px;
-      outline: none;
-
-      img {
-        opacity: 1;
-      }
-    }
-  }
-
   &__error {
     display: block;
     padding: 0 22px;
-    margin-bottom: 1rem;
+    margin-top: 1rem;
     text-align: center;
     color: var(--error-color);
   }
 }
 </style>
 <template>
-  <div class="search">
+  <section class="search">
     <form @submit.prevent="submitForm">
       <div class="search__group">
         <input
@@ -115,14 +81,10 @@
           <img src="/icons/search.svg" alt="Search Icon" />
         </button>
       </div>
+
       <div class="search__error" v-if="hasError">length must be between <strong>3</strong> and <strong>120</strong> characters</div>
-      <button type="button" class="search__lucky">
-        <img src="/icons/fire.gif" alt="Search Icon" />
-        I'm feeling like Norris
-        <img src="/icons/fire.gif" alt="Search Icon" />
-      </button>
     </form>
-  </div>
+  </section>
 </template>
 
 <script lang="ts">
@@ -137,7 +99,10 @@ export default class Search extends Vue {
   term: string = '';
 
   @DataModule.Action
-  requestFactByQuery!: (query: string) => void;
+  requestFactByQuery!: (query: string) => Promise<void>;
+
+  @DataModule.Action
+  requestRandomFact!: () => Promise<void>;
 
   checkErrors() {
     this.hasError = this.term.length < 3 || this.term.length > 120;
@@ -145,7 +110,10 @@ export default class Search extends Vue {
 
   submitForm() {
     this.checkErrors();
-    if (!this.hasError) this.requestFactByQuery(this.term);
+    if (!this.hasError)
+      this.requestFactByQuery(this.term).then(() => {
+        this.$router.push({ path: '/facts' });
+      });
   }
 }
 </script>

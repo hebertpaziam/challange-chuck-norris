@@ -1,41 +1,42 @@
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.home {
+  &__brand {
+    width: 90%;
+    max-width: 320px;
+    margin: auto;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+
+    &:hover,
+    &:focus {
+      animation-name: buzz;
+      animation-duration: 0.75s;
+      animation-timing-function: linear;
+      animation-iteration-count: 1;
+    }
+  }
+}
+</style>
 <template>
-  <div class="home">
+  <main class="home">
+    <figure class="home__brand">
+      <img alt="Chuck Norris Logo" src="/images/logo.png" />
+    </figure>
     <Search />
+    <FeelingLucky />
     <Categories />
-  </div>
+  </main>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { namespace } from 'vuex-class';
 
 import Categories from '@/components/Categories.vue';
+import FeelingLucky from '@/components/FeelingLucky.vue';
 import Search from '@/components/Search.vue';
 
-const DataModule = namespace('DataModule');
-
 @Component({
-  components: { Categories, Search }
+  components: { Categories, FeelingLucky, Search }
 })
-export default class Home extends Vue {
-  hasError: boolean = false;
-  searchTerm: string = '';
-  timeout: any;
-
-  @DataModule.Action
-  requestFactByQuery!: (query: string) => void;
-
-  submitForm() {
-    clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => {
-      if (this.searchTerm.length >= 3 && this.searchTerm.length <= 120) {
-        this.hasError = false;
-        this.requestFactByQuery(this.searchTerm);
-      } else {
-        this.hasError = true;
-      }
-    }, 400);
-  }
-}
+export default class Home extends Vue {}
 </script>

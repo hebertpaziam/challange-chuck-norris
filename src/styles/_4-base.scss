@@ -6,6 +6,25 @@ body {
   overflow-x: hidden;
 }
 
+main,
+section,
+header,
+footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  place-content: center;
+}
+
+section {
+  margin: 1.5rem auto;
+}
+
+form {
+  width: 100vw;
+}
+
 img {
   width: 100%;
   height: auto;

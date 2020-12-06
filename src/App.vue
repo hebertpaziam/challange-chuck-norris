@@ -8,13 +8,9 @@ footer {
 
 <template>
   <div class="app">
-    <header>
-      <Brand />
-    </header>
+    <header></header>
 
-    <main>
-      <router-view />
-    </main>
+    <router-view />
 
     <footer></footer>
   </div>
@@ -22,21 +18,9 @@ footer {
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { namespace } from 'vuex-class';
-
-import Brand from '@/components/Brand.vue';
-
-const DataModule = namespace('DataModule');
 
 @Component({
-  components: { Brand }
+  components: {}
 })
-export default class Home extends Vue {
-  @DataModule.Action
-  requestCategories!: () => void;
-
-  created() {
-    this.requestCategories();
-  }
-}
+export default class Home extends Vue {}
 </script>
