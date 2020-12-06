@@ -56,7 +56,7 @@ export default class FeelingLucky extends Vue {
   requestRandomFact!: () => Promise<void>;
 
   requestDataAndRedirect() {
-    this.requestRandomFact().then(() => this.$router.push({ path: '/fact-details' }));
+    this.requestRandomFact().then(() => this.$router.push({ name: 'fact-details' }));
   }
 }
 </script>

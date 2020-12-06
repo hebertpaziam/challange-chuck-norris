@@ -68,7 +68,7 @@ export default class Categories extends Vue {
   }
 
   requestDataAndRedirect(category: string) {
-    this.requestRandomFactByCategory(category).then(() => this.$router.push({ path: '/fact-details' }));
+    this.requestRandomFactByCategory(category).then(() => this.$router.push({ name: 'fact-details' }));
   }
 }
 </script>

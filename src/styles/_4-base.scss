@@ -1,8 +1,8 @@
 html,
 body {
-  font-size: 16px;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
+  font-size: 16px;
   overflow-x: hidden;
 }
 
@@ -14,7 +14,7 @@ footer {
   display: flex;
   flex-direction: column;
   place-items: center;
-  place-content: center;
+  place-content: flex-start;
 }
 
 section {
@@ -23,6 +23,14 @@ section {
 
 form {
   width: 100vw;
+}
+
+small {
+  color: #666;
+}
+
+figure {
+  display: flex;
 }
 
 img {
@@ -45,4 +53,13 @@ h6 {
   color: var(--primary-color);
   text-shadow: 2px 2px #222;
   font-family: var(--font-norris);
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  place-content: center;
+  width: 100%;
+  list-style: none;
 }

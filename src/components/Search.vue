@@ -101,19 +101,15 @@ export default class Search extends Vue {
   @DataModule.Action
   requestFactByQuery!: (query: string) => Promise<void>;
 
-  @DataModule.Action
-  requestRandomFact!: () => Promise<void>;
-
   checkErrors() {
     this.hasError = this.term.length < 3 || this.term.length > 120;
   }
 
   submitForm() {
     this.checkErrors();
-    if (!this.hasError)
-      this.requestFactByQuery(this.term).then(() => {
-        this.$router.push({ path: '/facts' });
-      });
+    if (!this.hasError) {
+      this.requestFactByQuery(this.term).then(() => this.$router.push({ name: 'fact-list', params: { term: this.term } }));
+    }
   }
 }
 </script>

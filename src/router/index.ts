@@ -10,16 +10,19 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes: [
     {
+      name: 'home',
       path: '/',
-      name: 'Home',
       meta: {
         title: 'Chuck Norris Facts - Home'
       },
       component: Home
     },
     {
+      name: 'fact-list',
       path: '/fact-list',
-      name: 'FactList',
+      props: {
+        term: ''
+      },
       meta: {
         title: 'Chuck Norris Facts - List'
       },
@@ -27,8 +30,8 @@ const router = new VueRouter({
       component: () => import('../views/FactList.vue')
     },
     {
+      name: 'fact-details',
       path: '/fact-details',
-      name: 'FactDetails',
       meta: {
         title: 'Chuck Norris Facts - Details'
       },
