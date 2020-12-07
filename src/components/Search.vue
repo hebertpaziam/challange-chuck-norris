@@ -1,11 +1,15 @@
 <style scoped lang="scss">
 .search {
+  &__form {
+    display: flex;
+  }
+
   &__group {
     position: relative;
     display: flex;
     place-items: stretch;
     place-content: center;
-    width: 90%;
+    width: 100%;
     max-width: 560px;
     height: 44px;
     margin: auto;
@@ -66,7 +70,7 @@
 </style>
 <template>
   <section class="search">
-    <form @submit.prevent="submitForm">
+    <form class="search__form" @submit.prevent="submitForm">
       <div class="search__group">
         <input
           type="search"

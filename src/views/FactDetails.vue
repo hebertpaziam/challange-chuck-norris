@@ -1,12 +1,13 @@
 <style scoped lang="scss">
 .fact-details {
   &__title {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 1rem 3rem;
+    text-align: center;
 
     &--open-fire {
+      padding: 3rem 2rem;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       background-image: url('/images/fire.gif');
     }
   }
@@ -59,7 +60,7 @@
   <main class="fact-details">
     <Loading v-if="!this.fact.id" />
     <template v-else>
-      <h1 class="fact-details__title" :class="{ 'fact-details__title--open-fire': isOpenFire }">FACT</h1>
+      <h1 class="fact-details__title" :class="{ 'fact-details__title--open-fire': isOpenFire }">Random Fact</h1>
       <blockquote class="fact-details__message" :cite="this.fact.url">
         {{ this.fact.value }}
       </blockquote>

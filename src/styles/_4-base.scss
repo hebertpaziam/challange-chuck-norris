@@ -15,6 +15,7 @@ footer {
   flex-direction: column;
   place-items: center;
   place-content: flex-start;
+  width: 100%;
 }
 
 main {
@@ -23,10 +24,6 @@ main {
 
 section {
   margin: 1.5rem auto;
-}
-
-form {
-  width: 100vw;
 }
 
 small {
