@@ -36,7 +36,7 @@
 </style>
 <template>
   <section class="feeling-lucky">
-    <button class="feeling-lucky__action" type="button" @click.prevent="requestDataAndRedirect">
+    <button class="feeling-lucky__action" type="button" @click.prevent="redirectToFact">
       <img src="/icons/fire.gif" alt="Search Icon" />
       I'm feeling like Norris
       <img src="/icons/fire.gif" alt="Search Icon" />
@@ -46,17 +46,11 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { namespace } from 'vuex-class';
-
-const DataModule = namespace('DataModule');
 
 @Component({})
 export default class FeelingLucky extends Vue {
-  @DataModule.Action
-  requestRandomFact!: () => Promise<void>;
-
-  requestDataAndRedirect() {
-    this.requestRandomFact().then(() => this.$router.push({ name: 'fact-details' }));
+  redirectToFact() {
+    this.$router.push({ name: 'fact-details' });
   }
 }
 </script>

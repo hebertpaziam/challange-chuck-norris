@@ -1,6 +1,5 @@
 <style scoped lang="scss">
 .fact-list {
-  padding: 1rem;
   &__headings {
     margin-bottom: 1rem;
     text-align: center;
@@ -17,25 +16,11 @@
       border-radius: var(--radius-default);
     }
   }
-
-  &__loading {
-    text-align: center;
-    img {
-      border-radius: var(--radius-default);
-      animation: fadeIn cubic-bezier(0.75, 0, 1, 0) 3s;
-    }
-  }
 }
 </style>
 <template>
   <main class="fact-list">
-    <div class="fact-list__loading" v-if="this.facts.total === undefined">
-      <h1>Loading...</h1>
-      <figure class="fact-list__loading">
-        <img src="/images/waiting.jpg" alt="Chuck Norris doesn't sleep... he waits" />
-      </figure>
-    </div>
-
+    <Loading v-if="this.facts.total === undefined" />
     <template v-else>
       <div class="fact-list__headings">
         <h1>{{ this.facts.total || 'No' }} {{ this.facts.total === 1 ? 'Fact' : 'Facts' }} Found</h1>
@@ -61,6 +46,7 @@ import { namespace } from 'vuex-class';
 
 import Card from '@/components/Card.vue';
 import Search from '@/components/Search.vue';
+import Loading from '@/components/Loading.vue';
 
 import IFact from '@/interfaces/fact.interface';
 import IList from '@/interfaces/list.interface';
@@ -68,7 +54,7 @@ import IList from '@/interfaces/list.interface';
 const DataModule = namespace('DataModule');
 
 @Component({
-  components: { Card, Search }
+  components: { Card, Search, Loading }
 })
 export default class FactList extends Vue {
   @DataModule.State

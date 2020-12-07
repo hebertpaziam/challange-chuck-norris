@@ -102,7 +102,7 @@
       <figure class="card__icon">
         <img :src="fact.icon_url" alt="Fact Icon" rel="noopener noreferrer" />
       </figure>
-      <blockquote class="card__message">
+      <blockquote class="card__message" :cite="this.fact.url">
         {{ fact.value }}
       </blockquote>
     </div>

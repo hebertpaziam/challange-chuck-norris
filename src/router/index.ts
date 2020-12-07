@@ -29,6 +29,9 @@ const router = new VueRouter({
     {
       name: 'fact-details',
       path: '/fact-details',
+      props: {
+        onFire: null
+      },
       meta: {
         title: 'Chuck Norris Facts - Details'
       },

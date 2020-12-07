@@ -17,6 +17,10 @@ footer {
   place-content: flex-start;
 }
 
+main {
+  padding: 1rem;
+}
+
 section {
   margin: 1.5rem auto;
 }
@@ -31,6 +35,8 @@ small {
 
 figure {
   display: flex;
+  place-content: center;
+  place-items: center;
 }
 
 img {
