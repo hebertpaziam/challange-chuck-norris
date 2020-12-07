@@ -1,5 +1,5 @@
 <style scoped lang="scss">
-.card {
+.card-basic {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -88,26 +88,26 @@
 }
 </style>
 <template>
-  <article class="card">
-    <div class="card__headings">
-      <a class="card__source" :href="fact.url" target="_blank">
-        <small>{{ source }}</small>
+  <article class="card-basic">
+    <div class="card-basic__headings">
+      <a class="card-basic__source" :href="fact.url" target="_blank">
+        <small>#{{ fact.id }}</small>
       </a>
-      <ul class="card__badges">
-        <li class="card__badge" v-for="category of fact.categories" :key="category">{{ category }}</li>
+      <ul class="card-basic__badges">
+        <li class="card-basic__badge" v-for="category of fact.categories" :key="category">{{ category }}</li>
       </ul>
     </div>
 
-    <div class="card__content">
-      <figure class="card__icon">
+    <div class="card-basic__content">
+      <figure class="card-basic__icon">
         <img :src="fact.icon_url" alt="Fact Icon" rel="noopener noreferrer" />
       </figure>
-      <blockquote class="card__message" :cite="this.fact.url">
+      <blockquote class="card-basic__message" :cite="this.fact.url">
         {{ fact.value }}
       </blockquote>
     </div>
 
-    <div class="card__footer">
+    <div class="card-basic__footer">
       <small>created at: {{ formatDate(fact.created_at) }}</small>
       <small>updated at: {{ formatDate(fact.updated_at) }}</small>
     </div>
@@ -119,12 +119,8 @@ import IFact from '@/interfaces/fact.interface';
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
 @Component
-export default class Card extends Vue {
+export default class CardBasic extends Vue {
   @Prop({ required: true }) readonly fact!: IFact;
-
-  get source() {
-    return `#${this.fact.id.toLowerCase()}`;
-  }
 
   formatDate(date: Date) {
     const { day, month, year, timeZone } = Intl.DateTimeFormat().resolvedOptions();

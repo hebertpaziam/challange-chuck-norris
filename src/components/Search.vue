@@ -2,6 +2,9 @@
 .search {
   &__form {
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 560px;
   }
 
   &__group {
@@ -10,7 +13,6 @@
     place-items: stretch;
     place-content: center;
     width: 100%;
-    max-width: 560px;
     height: 44px;
     margin: auto;
   }

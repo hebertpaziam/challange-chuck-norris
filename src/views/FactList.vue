@@ -29,7 +29,7 @@
 
       <ul v-if="facts.total > 0">
         <li class="fact-list__card" v-for="fact of facts.result" :key="fact.id">
-          <Card :fact="fact" />
+          <CardBasic :fact="fact" />
         </li>
       </ul>
 
@@ -44,7 +44,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 
-import Card from '@/components/Card.vue';
+import CardBasic from '@/components/CardBasic.vue';
 import Search from '@/components/Search.vue';
 import Loading from '@/components/Loading.vue';
 
@@ -54,7 +54,7 @@ import IList from '@/interfaces/list.interface';
 const DataModule = namespace('DataModule');
 
 @Component({
-  components: { Card, Search, Loading }
+  components: { CardBasic, Search, Loading }
 })
 export default class FactList extends Vue {
   @DataModule.State
