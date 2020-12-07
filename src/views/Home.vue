@@ -30,13 +30,22 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { namespace } from 'vuex-class';
 
 import Categories from '@/components/Categories.vue';
 import FeelingLucky from '@/components/FeelingLucky.vue';
 import Search from '@/components/Search.vue';
 
+const DataModule = namespace('DataModule');
 @Component({
   components: { Categories, FeelingLucky, Search }
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  @DataModule.Action
+  clearFacts!: () => Promise<void>;
+
+  created() {
+    this.clearFacts();
+  }
+}
 </script>

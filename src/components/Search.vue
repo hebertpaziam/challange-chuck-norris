@@ -89,17 +89,11 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { namespace } from 'vuex-class';
-
-const DataModule = namespace('DataModule');
 
 @Component({})
 export default class Search extends Vue {
   hasError: boolean = false;
   term: string = '';
-
-  @DataModule.Action
-  requestFactByQuery!: (query: string) => Promise<void>;
 
   checkErrors() {
     this.hasError = this.term.length < 3 || this.term.length > 120;
@@ -107,9 +101,7 @@ export default class Search extends Vue {
 
   submitForm() {
     this.checkErrors();
-    if (!this.hasError) {
-      this.requestFactByQuery(this.term).then(() => this.$router.push({ name: 'fact-list', params: { term: this.term } }));
-    }
+    if (!this.hasError) this.$router.push({ name: 'fact-list', params: { term: this.term } });
   }
 }
 </script>

@@ -19,10 +19,7 @@ const router = new VueRouter({
     },
     {
       name: 'fact-list',
-      path: '/fact-list',
-      props: {
-        term: ''
-      },
+      path: '/fact-list/:term',
       meta: {
         title: 'Chuck Norris Facts - List'
       },

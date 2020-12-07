@@ -12,7 +12,7 @@ const get = (url: string) => {
 @Module({ namespaced: true })
 export default class DataModule extends VuexModule {
   categories: Array<string> = [];
-  facts: IList<IFact> = { total: 0, result: [] };
+  facts: IList<IFact> = {} as IList<IFact>;
 
   // ========== MUTATIONS ========== //
   @Mutation
@@ -25,12 +25,24 @@ export default class DataModule extends VuexModule {
     this.facts = result;
   }
 
+  @Mutation
+  removeFacts() {
+    this.facts = {} as IList<IFact>;
+  }
+
   // ========== ACTIONS ========== //
   @Action
+  clearFacts() {
+    this.context.commit('removeFacts');
+  }
+
+  @Action
   requestCategories() {
-    return get(`https://api.chucknorris.io/jokes/categories`).then((data) => {
-      this.context.commit('setCategories', data);
-    });
+    if (this.categories.length > 0) return Promise.resolve();
+    else
+      return get(`https://api.chucknorris.io/jokes/categories`).then((data) => {
+        this.context.commit('setCategories', data);
+      });
   }
 
   @Action
