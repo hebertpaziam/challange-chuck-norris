@@ -5,7 +5,7 @@ import { Action, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 const get = (url: string) => {
   return fetch(url).then((response) => {
     if (response.ok) return response.json();
-    else throw Error(response.statusText);
+    else return Promise.reject(response.statusText);
   });
 };
 
