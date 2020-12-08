@@ -129,16 +129,8 @@ export default class CardDetailed extends Vue {
   }
 
   formatDate(date: Date) {
-    const { day, month, year, timeZone } = Intl.DateTimeFormat().resolvedOptions();
-    return Intl.DateTimeFormat(undefined, {
-      day,
-      month,
-      year,
-      timeZone,
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit'
-    }).format(new Date(date));
+    const { locale, timeZone } = Intl.DateTimeFormat().resolvedOptions();
+    return new Date(date).toLocaleString(locale, { timeZone });
   }
 }
 </script>
