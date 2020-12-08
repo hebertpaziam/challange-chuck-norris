@@ -61,7 +61,7 @@ export default class FactDetails extends Vue {
 
   created() {
     const { category } = this.$route.query;
-    const promise = category ? this.requestRandomFactByCategory(category as string) : this.requestRandomFact();
+    const promise = category ? this.requestRandomFactByCategory(category.toString()) : this.requestRandomFact();
     promise.catch(() => this.$router.push({ name: 'home' }));
   }
 }
