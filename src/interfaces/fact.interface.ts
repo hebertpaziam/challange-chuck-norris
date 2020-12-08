@@ -4,6 +4,6 @@ export default interface IFact {
   icon_url: string;
   id: string;
   updated_at: Date;
-  url?: string;
+  url: string;
   value: string;
 }
