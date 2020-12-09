@@ -67,13 +67,13 @@ describe('FactDetails.vue', () => {
     const category = lorem.word();
 
     mountComponent(true, category);
-    expect(component.isOpenFire).toBeFalsy();
+    expect(component.isOnFire).toBeFalsy();
     expect(actions.requestRandomFactByCategory).toHaveBeenCalled();
   });
 
   it('should request a random fact when category is not passed by query param', () => {
     mountComponent(true);
-    expect(component.isOpenFire).toBeTruthy();
+    expect(component.isOnFire).toBeTruthy();
     expect(actions.requestRandomFact).toHaveBeenCalled();
   });
 

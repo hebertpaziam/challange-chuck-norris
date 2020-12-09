@@ -79,9 +79,7 @@
   <article class="card-detailed">
     <div class="card-detailed__content">
       <h2>Message</h2>
-      <blockquote class="card-detailed__message" :cite="this.fact.url">
-        {{ this.fact.value }}
-      </blockquote>
+      <blockquote class="card-detailed__message" :cite="this.fact.url">{{ this.fact.value }}</blockquote>
     </div>
 
     <div class="card-detailed__divider"></div>
@@ -94,7 +92,7 @@
       <div class="card-detailed__info">
         <dt>Source</dt>
         <dd>
-          <a :href="this.fact.url">#{{ this.fact.id }}</a>
+          <a :href="this.fact.url" alt="Fact source page">#{{ this.fact.id }}</a>
         </dd>
       </div>
 
@@ -104,12 +102,12 @@
       </div>
 
       <div class="card-detailed__info">
-        <dt>created at</dt>
+        <dt>Created at</dt>
         <dd>{{ this.formatDate(this.fact.created_at) }}</dd>
       </div>
 
       <div class="card-detailed__info">
-        <dt>updated at</dt>
+        <dt>Updated at</dt>
         <dd>{{ this.formatDate(this.fact.updated_at) }}</dd>
       </div>
     </dl>

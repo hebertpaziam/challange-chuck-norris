@@ -3,7 +3,7 @@
   &__title {
     text-align: center;
 
-    &--open-fire {
+    &--on-fire {
       padding: 2rem;
       background-size: cover;
       background-position: center;
@@ -17,7 +17,7 @@
   <main class="fact-details">
     <Loading v-if="!this.fact.id" />
     <template v-else>
-      <h1 class="fact-details__title" :class="{ 'fact-details__title--open-fire': isOpenFire }">Random Fact</h1>
+      <h1 class="fact-details__title" :class="{ 'fact-details__title--on-fire': isOnFire }">Random Fact</h1>
       <CardDetailed :fact="this.fact" />
     </template>
   </main>
@@ -47,7 +47,7 @@ export default class FactDetails extends Vue {
   @DataModule.Action
   requestRandomFactByCategory!: (category: string) => Promise<void>;
 
-  get isOpenFire() {
+  get isOnFire() {
     return this.$route.query.category ? false : true;
   }
 
