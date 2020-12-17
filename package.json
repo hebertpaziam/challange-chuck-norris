@@ -1,6 +1,6 @@
 {
   "name": "chuck-norris-app",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": false,
   "description": "A website that implements the Chuck Norris Jokes API to bring facts about the god called Chuck Norris.",
   "readme": "README.md",
@@ -17,7 +17,7 @@
   ],
   "author": {
     "name": "Hebert Paziam",
-    "email": "hebertpazian@hotmail.com"
+    "email": "hebert.paziam@outlook.com"
   },
   "repository": {
     "type": "git",
