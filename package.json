@@ -5,7 +5,7 @@
   "description": "A website that implements the Chuck Norris Jokes API to bring facts about the god called Chuck Norris.",
   "readme": "README.md",
   "license": "MIT",
-  "homepage": "https://github.com/hebertpazian/chuck-norris-app#readme",
+  "homepage": "https://github.com/hebertpaziam/chuck-norris-app#readme",
   "keywords": [
     "Chuck",
     "Norris",
@@ -16,12 +16,12 @@
     "BadAss"
   ],
   "author": {
-    "name": "Hebert Paziam",
+    "name": "Hebert Marcos Paziam",
     "email": "hebert.paziam@outlook.com"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hebertpazian/chuck-norris-app.git"
+    "url": "git+https://github.com/hebertpaziam/chuck-norris-app.git"
   },
   "scripts": {
     "start": "vue-cli-service serve",
