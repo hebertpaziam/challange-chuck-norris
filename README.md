@@ -1,4 +1,4 @@
-# Chuck Norris Facts App
+# Chuck Norris Facts Challange
 
 A website that implements the Chuck Norris Jokes API to bring facts about the god called Chuck Norris.
 
